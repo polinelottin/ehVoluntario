@@ -1,29 +1,54 @@
+<!DOCTYPE html>
+
 <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <script src="lib/angular.min.js"></script>
 
 <html ng-app="ehVoluntario">
 	<head>
+		<title>EhVoluntario</title>
+		<meta charset="UTF-8">
+		<style type="text/css">.jumbotron{margin-left: 50px; margin-right: 50px; margin-top: 50px}</style>
 		<script type="text/javascript">
-			var app = angular.module("ehVoluntario", [])
+			var app = angular.module("ehVoluntario", []);
 			app.controller("ehVoluntarioCtrl", function ($scope) { 
-				$scope.instituicoes = [{nome:'SERTE'}, {nome:'Lar Recanto do Carinho'}];
-				
-				criaInituicao = new function(){
-					{nome:'SERTE'}
-				}
+				var instituicoes = [
+					{nome:'SERTE',
+					trabalhos:[
+						{nome:'Ajudar na cozinha', descricao:'Cortar tempeiros'},
+						{nome:'Animar a festinha', descricao:'Ser a galinha pintadinha'}
+					]
+					}, 
+					{nome:'Lar Recanto do Carinho',
+					trabalhos:[
+						{nome:'Doação de roupas', descricao:'Serve roupa velha'},
+						{nome:'Ler para as crianças', descricao:'A História sem Fim. Horário: 15h00'}
+					]
+					}
+				]
+
+				$scope.instituicoes = instituicoes;
+
 			});
 		</script>
 	</head>
 
 	<body ng-controller="ehVoluntarioCtrl">
-		<ul>
-		<li ng-repeat="instituicao in instituicoes" >
-			{{instituicao.nome}}
+		<div class="page-header">
+			<h1>EhVoluntario <small>Quer ajudar alguém?</small></h1>
+		</div>
+		<div class="jumbotron col-lg-8 col-md-8 col-sm-8" > 
 			<ul>
-				<li>teste </li>
-				<li>teste </li>
+			<li ng-repeat="instituicao in instituicoes" >
+				<h3><b>{{instituicao.nome}}</b></h3>
+				<ul>
+					<li ng-repeat="trabalho in instituicao.trabalhos">
+						<b>{{trabalho.nome}}</b> <br> <i>{{trabalho.descricao}}</i>
+						<br><br>
+					</li>
+				</ul>
+				<br>
+			</li>
 			</ul>
-		</li>
-		</ul>
+		</div>
 	</body>
 </html>
