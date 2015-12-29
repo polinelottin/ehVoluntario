@@ -1,0 +1,29 @@
+<link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="lib/angular.min.js"></script>
+
+<html ng-app="ehVoluntario">
+	<head>
+		<script type="text/javascript">
+			var app = angular.module("ehVoluntario", [])
+			app.controller("ehVoluntarioCtrl", function ($scope) { 
+				$scope.instituicoes = [{nome:'SERTE'}, {nome:'Lar Recanto do Carinho'}];
+				
+				criaInituicao = new function(){
+					{nome:'SERTE'}
+				}
+			});
+		</script>
+	</head>
+
+	<body ng-controller="ehVoluntarioCtrl">
+		<ul>
+		<li ng-repeat="instituicao in instituicoes" >
+			{{instituicao.nome}}
+			<ul>
+				<li>teste </li>
+				<li>teste </li>
+			</ul>
+		</li>
+		</ul>
+	</body>
+</html>
