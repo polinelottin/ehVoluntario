@@ -100,10 +100,21 @@
 						</div>
 						<div class="jobs-inner">
 							<div class="job" ng-repeat="trabalho in instituicao.trabalhos">
-								<img src="{{trabalho.imagem}}" class="img-circle"><p>
-								<div class="button-incricao">
-									<p><a class="btn btn-default" href="#" role="button">Me interessei &raquo;</a></p>
-								</div>
+								<hr class="featurette-divider">
+
+							    <div class="row featurette">
+							    	<div class="col-md-7">
+							        	<h2 class="featurette-heading">{{trabalho.nome}} <span class="text-muted">It'll blow your mind.</span></h2>
+							        	<p class="lead">{{trabalho.descricao}}</p>
+							        	<div class="button-incricao">
+											<p><a class="btn btn-default" href="#" role="button">Me interessei &raquo;</a></p>
+										</div>
+							        </div>
+							        <div class="col-md-5">
+							          <img class="featurette-image img-responsive center-block" src="{{trabalho.imagem}}" alt="{{trabalho.descricao}}">
+							        </div>
+							        
+							      </div>
 							</div>
 						</div>
 					</div>
@@ -118,6 +129,10 @@
 				<span class="icon-next"></span>
 			</a>
 
+			<footer>
+        		<p class="pull-right"><a href="#">Back to top</a></p>
+        		<p>&copy; 2015 EhVoluntário, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      		</footer>
 
 		</div>
 
