@@ -27,9 +27,9 @@
 					logo:'res/serte.png',
 					trabalhos:[
 						{nome:'Ajudar na cozinha', imagem: 'images/jobs/cozinhar.jpg', descricao:'Cortar tempeiros'},
-						{nome:'Animar a festinha',  imagem:'images/jobs/animar-festa.jpg', descricao:'Ser a galinha pintadinha Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 																quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse																cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
-						{nome:'Animar a festinha',  imagem:'images/jobs/animar-festa.jpg', descricao:'Ser a galinha pintadinha Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 																quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse																cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
-						{nome:'Animar a festinha',  imagem:'images/jobs/animar-festa.jpg', descricao:'Ser a galinha pintadinha Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 																quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse																cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
+						{nome:'Animar a festinha',  imagem:'images/jobs/animar-festa.jpg', descricao:'Ser a galinha pintadinha Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
+						{nome:'Animar a festinha',  imagem:'images/jobs/animar-festa.jpg', descricao:'Ser a galinha pintadinha Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'},
+						{nome:'Animar a festinha',  imagem:'images/jobs/animar-festa.jpg', descricao:'Ser a galinha pintadinha Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'}
 					]
 					}, 
 					{nome:'Lar Recanto do Carinho',
@@ -37,20 +37,19 @@
 					logo:'res/recanto.png',
 					trabalhos:[
 						{nome:'Doação de roupas', imagem:'images/jobs/doar-roupas.jpg', descricao:'Serve roupa velha'},
-						{nome:'Ler para as crianças', imagem:'images/jobs/ler.jpg', descricao:'A História sem Fim. Horário: 15h00. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse																cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
+						{nome:'Ler para as crianças', imagem:'images/jobs/ler.jpg', descricao:'A História sem Fim. Horário: 15h00. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.'}
 					]
 					}
 				]
 				
 				$scope.instituicoes = instituicoes;
-				$scope.email = "";
-
-				$scope.salvarEmail = function(email){
-					alert(email);	
-					//var email = email;
-				}
-
 			});
+			
+			function salvarEmail() {
+				var email = $('#email').val();
+				alert(email);
+				//var email = email;
+			}
 		</script>
 	</head>
 
@@ -85,14 +84,16 @@
 					<button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
 				</p>
 				<div class="jumbotron">
-					<h1>Eh Voluntario!</h1>
+					<h1>Eh Voluntário!</h1>
 					<p>Queremos saber se você pode ajudar </p>
 				</div>
 
 				<div ng-repeat="instituicao in instituicoes" class="row">
-					<h1 >{{instituicao.nome}}</h1>
+		        	<img alt="{{instituicao.nome}}" src="{{instituicao.logo}}" width="25" height="25">
+					<p>{{instituicao.nome}}</p>
 					<div ng-repeat="trabalho in instituicao.trabalhos" class="col-xs-6 col-lg-4">
-						<h2>{{trabalho.nome}}</h2>
+						<!-- <img class="img-circle" src="{{trabalho.imagem}}" alt="{{trabalho.nome}}" width="100" height="100"> -->
+						<h4>{{trabalho.nome}}</h4>
 						<p>{{trabalho.descricao}}</p>
 						<p><a class="btn btn-info" href="#myModal" data-toggle="modal" role="button">Quero ajudar! &raquo;</a></p>
 
@@ -108,18 +109,17 @@
 										<p>Por favor nos informe seu e-mail e entraremos em contato com mais informações sobre como fazer um mundo melhor :)</p>
 										<div class="input-group"> 
 											<span class="input-group-addon" id="basic-addon1">@</span> 
-											<input ng-model="$scope.email" type="text" class="form-control" placeholder="email" aria-describedby="basic-addon1">
+											<input ng-model="$scope.email" type="text" class="form-control" placeholder="email" aria-describedby="basic-addon1" id="email">
 
 										</div>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-success" onclick="$scope.salvarEmail($scope.email)">Enviar</button>
+										<button type="button" class="btn btn-success" onclick="salvarEmail()">Enviar</button>
 									</div>
 								</div>
 							</div>
 						</div>
-						
-					</div><!--/.col-xs-6.col-lg-4-->
+					</div>
 				</div><!--/row-->
 			</div><!--/.col-xs-12.col-sm-9-->
 
@@ -135,7 +135,7 @@
 
 		<hr>
 		<footer>
-			<p>&copy; 2015 Company, Inc.</p>
+			<p>&copy; 2016 Eh Voluntário, Inc.</p>
 		</footer>
 
     </div><!--/.container-->
