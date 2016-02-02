@@ -1,0 +1,12 @@
+{
+  "name"         : "ehVoluntario",
+  "version"      : "0.0.0",
+  "description"  : "Eh Voluntario",
+  "main"         : "server.js",
+  "author"       : "Nos",
+  "dependencies" : {
+    "express"    : "~4.7.2",
+    "nodemailer"    : "~2.1.0",
+    "body-parser": "~1.5.2"
+  }
+}

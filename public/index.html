@@ -17,9 +17,11 @@
 			
 		</style>
 		
-		<script type="text/javascript">			
+				
+		<script type="text/javascript">
+						
 			var app = angular.module("ehVoluntario", []);
-			app.controller("ehVoluntarioCtrl", function ($scope) { 
+			app.controller("ehVoluntarioCtrl", function ($scope, $http) { 
 				var instituicoes = [
 					{nome:'SERTE',
 					id:'1',
@@ -42,13 +44,17 @@
 				]
 				
 				$scope.instituicoes = instituicoes;
+				$scope.email = '';
+
+				$scope.sendMail = function(){
+					$http.post('/sendMail', $scope.email).success(function(email) {
+			            console.log(email);
+			        }).error(function(email) {
+			            console.log('Error: ' + email);
+			        });
+				}
 			});
 			
-			function salvarEmail() {
-				var email = $('#email').val();
-				alert(email);
-				//var email = email;
-			}
 		</script>
 	</head>
 
@@ -100,21 +106,23 @@
 						<div id="myModal" class="modal fade">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-										<h4 class="modal-title">Estamos quase lá!</h4>
-									</div>
-									<div class="modal-body">
-										<p>Por favor nos informe seu e-mail e entraremos em contato com mais informações sobre como fazer um mundo melhor :)</p>
-										<div class="input-group"> 
-											<span class="input-group-addon" id="basic-addon1">@</span> 
-											<input ng-model="$scope.email" type="text" class="form-control" placeholder="email" aria-describedby="basic-addon1" id="email">
-
+									<form>
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title">Estamos quase lá!</h4>
 										</div>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-success" onclick="salvarEmail()">Enviar</button>
-									</div>
+										<div class="modal-body">
+											<p>Por favor nos informe seu e-mail e entraremos em contato com mais informações sobre como fazer um mundo melhor :)</p>
+											<div class="input-group"> 
+												<span class="input-group-addon" id="basic-addon1">@</span> 
+												<input ng-model="$scope.email" type="text" class="form-control" placeholder="email" aria-describedby="basic-addon1" >
+
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-success" ng-click="sendMail()">Enviar</button>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
